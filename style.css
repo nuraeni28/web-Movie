@@ -489,7 +489,7 @@ html::-webkit-scrollbar-thumb{
 /* images */
 .images-container{
     display: grid;
-    grid-template-columns: repeat(3, 30%);
+    grid-template-columns: repeat(5, 1fr);
     justify-content: center;
     align-items: center;
     gap: 1,5rem;

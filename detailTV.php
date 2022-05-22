@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Netflex and Stress</title>
+  <title>Netflex Movie - Show Detail</title>
   <script src="https://unpkg.com/feather-icons"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
@@ -20,7 +20,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="h1 text-white navbar-brand text-bg-danger" href="index.php">Netlfex</a>
+        <a class="h1 text-white navbar-brand text-bg-danger" href="index.php">Netflex</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -88,8 +88,8 @@
               <span class="h1 badge text-bg-danger">Ultra HD</span>
               <!-- rating -->
               <span class="h1 badge text-bg-warning ms-3"><?php echo $detailTV->vote_average ?></span>
-              <span class="h1 badge text-bg-dark ms-3"><?php echo $detailTV->number_of_episodes?> EPISODES</span>
-              <span class="h1 badge text-bg-dark ms-3"><?php echo $detailTV->number_of_seasons?> SEASONS</span>
+              <span class="h1 badge text-bg-dark ms-3"><?php echo $detailTV->number_of_episodes ?> EPISODES</span>
+              <span class="h1 badge text-bg-dark ms-3"><?php echo $detailTV->number_of_seasons ?> SEASONS</span>
               <!-- endrating -->
             </div>
             <!-- title bottom -->
@@ -179,19 +179,20 @@
         <div class="latest-heading mb-3">
           <h1 class="text-danger">Images</h1>
         </div>
+
         <!-- images container -->
-        <?php
-        include_once "api/images_tv.php";
-        foreach ($imgTV->backdrops as $img) {
-        ?>
         <div class="images-container">
-          <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $img->file_path ?>" alt="">
+          <?php
+          include_once "api/images_tv.php";
+          foreach ($imgTV->backdrops as $img) {
+          ?>
+            <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $img->file_path ?>" alt="">
+          <?php } ?>
         </div>
-        <?php } ?>
       </section>
-      
+
     </section>
-    
+
 
     <section id="latest">
       <!-- heading -->
@@ -248,6 +249,10 @@
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
       breakpoints: {
         640: {
