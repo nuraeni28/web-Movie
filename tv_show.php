@@ -45,7 +45,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="movies.php">Movies</a>
@@ -78,12 +78,6 @@
               </li>
             </ul>
             <form class="d-flex" role="search" action="searchMovie.php" method="get">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
               <button class="btn btn-outline-danger" type="submit">
                 Search
               </button>
@@ -153,7 +147,7 @@
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
-                  <a href="#"><?php echo $now->name?></a>
+                <a href=<?php echo 'detailTV.php?id='.$now->id ?>> <?php echo $now->name?></a>
                   <span><?php echo $now->first_air_date?></span>
                 </div>
               </div>

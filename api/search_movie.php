@@ -39,7 +39,7 @@ foreach($searchMovie->results as $seMov){
     <!-- bottomtext -->
     <div class="bottom-text">
       <div class="movie-name">
-        <a href="#"><?php echo $seMov->original_title?></a>
+      <a href=<?php echo 'detailMovie.php?id='.$seMov->id ?>><?php echo $seMov->original_title?></a>
         <span><?php echo $seMov->release_date?></span>
       </div>
     </div>

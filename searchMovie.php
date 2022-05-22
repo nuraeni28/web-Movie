@@ -48,7 +48,7 @@
                 <a class="nav-link active" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Movies</a>
+                <a class="nav-link" href="movies.php">Movies</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -74,7 +74,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link">TV Show</a>
+                <a class="nav-link" href="tv_show.php">TV Show</a>
               </li>
             </ul>
             <div class="d-flex">

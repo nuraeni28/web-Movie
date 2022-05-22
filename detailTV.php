@@ -30,7 +30,7 @@
               <a class="nav-link" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Movies</a>
+              <a class="nav-link" href="movies.php">Movies</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,15 +46,14 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link">TV Show</a>
+              <a class="nav-link" href="tv_show.php">TV Show</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-danger" type="submit">
-              Search
-            </button>
-          </form>
+          <form class="d-flex" role="search" action="searchMovie.php" method="get">
+              <button class="btn btn-outline-danger" type="submit">
+                Search
+              </button>
+            </form>
         </div>
       </div>
     </nav>
@@ -64,24 +63,24 @@
     <!-- movie banner -->
     <section class="movie-banner">
       <?php
-      $id_movie = $_GET['id'];
-      include_once "api/detail_movie.php";
+      // $id_movie = $_GET['id'];
+      include_once "api/detail_tv.php";
       ?>
       <div class="m-banner-img">
-        <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailMovie->poster_path ?>" alt="" />
+        <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailTV->poster_path ?>" alt="" />
       </div>
       <div class="banner-container">
 
         <!-- title -->
         <div class="title-container">
-         <img class="mb-3" src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailMovie->poster_path ?>" alt="" />
+         <img class="mb-3" src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailTV->poster_path ?>" alt="" />
           <div class="tittle-top">
             <div class="movie-title">
-              <h1><?php echo $detailMovie->original_title ?></h1>
+              <h1><?php echo $detailTV->name ?></h1>
             </div>
             <div class="more-about-movie">
               <p class="text-light">
-                <?php echo $detailMovie->overview ?>
+                <?php echo $detailTV->overview ?>
               </p>
             </div>
 
@@ -96,7 +95,7 @@
           <div class="title-bottom">
             <div class="category">
               <?php
-              foreach ($detailMovie->genres as $genres) {
+              foreach ($detailTV->genres as $genres) {
               ?>
                 <a class="text-light" href="#"> <?php echo $genres->name ?></a> |
               <?php } ?>
@@ -142,9 +141,8 @@
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
             <?php
-            $id_movie = $_GET['id'];
-            include_once "api/credit_movie.php";
-            foreach ($creditMovie->cast as $credit) {
+            include_once "api/credit_tv.php";
+            foreach ($creditTV->cast as $credit) {
             ?>
               <div class="swiper-slide">
                 <div class="main-slider-box">
@@ -181,8 +179,8 @@
       <div class="post-container">
         <!-- postbox -->
         <?php
-        include_once "api/recomended_movie.php";
-        foreach ($recomendedMovie->results as $recomended) {
+        include_once "api/recomended_tv.php";
+        foreach ($recomendedTV->results as $recomended) {
         ?>
           <div class="post-box">
             <!-- img -->
@@ -194,8 +192,8 @@
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
-                <a href=<?php echo 'detail.php?id='.$recomended->id ?>><?php echo $recomended->original_title ?></a>
-                  <span><?php echo $recomended->release_date ?></span>
+                <a href=<?php echo 'detailTV.php?id='.$recomended->id ?>><?php echo $recomended->name?></a>
+                  <span><?php echo $recomended->first_air_date ?></span>
                 </div>
               </div>
             </div>
