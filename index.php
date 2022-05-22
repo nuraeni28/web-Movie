@@ -60,13 +60,13 @@
 
   <main>
     <!-- movie banner -->
-    <section class="movie-banner">
+    <!-- <section class="movie-banner">
       <div class="m-banner-img">
         <img src="images/cover.jpeg" alt="" />
       </div>
-      <div class="banner-container">
+      <div class="banner-container"> -->
         <!-- title -->
-        <div class="title-container">
+        <!-- <div class="title-container">
           <div class="tittle-top">
             <div class="movie-title">
               <h1>The Adam Project</h1>
@@ -80,9 +80,9 @@
             </div>
             <div class="badges">
               <span class="h1 badge text-bg-danger">Ultra HD</span>
-            </div>
+            </div> -->
             <!-- title bottom -->
-          </div>
+          <!-- </div>
           <div class="title-bottom">
             <div class="category">
               <a class="text-light" href="#">Action</a> | <a href="#" class="text-light">Sci-Fi</a>
@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- movieslider -->
     <section id="main-slider">

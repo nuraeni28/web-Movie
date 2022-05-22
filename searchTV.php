@@ -93,7 +93,7 @@
         }
 
       };
-      xmlhttp.open("GET", "http://localhost/rwuts/web-Movie/api/search_movie.php?query=" + query, true);
+      xmlhttp.open("GET", "http://localhost/rwuts/web-Movie/api/search_tv.php?query=" + query, true);
       xmlhttp.send();
     };
   </script>
