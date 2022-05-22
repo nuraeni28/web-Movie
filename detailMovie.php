@@ -87,7 +87,7 @@
             <div class="badges">
               <span class="h1 badge text-bg-danger">Ultra HD</span>
               <!-- rating -->
-              <span class="h1 badge text-bg-warning ms-3">8.0</span>
+              <span class="h1 badge text-bg-warning ms-3"><?php echo $detailMovie->vote_average ?></span>
 
               <!-- endrating -->
             </div>
@@ -209,7 +209,6 @@
               <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $recomended->poster_path ?>" alt="" />
             </div>
             <div class="main-slider-text">
-              <span class="badge text-bg-danger">FULL HD</span>
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">

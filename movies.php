@@ -81,8 +81,6 @@
               <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $now->poster_path ?>" alt="" />
             </div>
             <div class="main-slider-text">
-              <span class="badge text-bg-danger">FULL HD</span>
-
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
@@ -116,8 +114,6 @@
               <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $pop->poster_path ?>" alt="" />
             </div>
             <div class="main-slider-text">
-              <span class="badge text-bg-danger">FULL HD</span>
-
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
