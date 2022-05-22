@@ -31,7 +31,16 @@ foreach($searchMovie->results as $seMov){
 <div class="post-box">
   <!-- img -->
   <div class="post-img">
-    <img src="<?php echo 'http://image.tmdb.org/t/p/w500'.$seMov->poster_path?>" alt="not found " />
+  <?php 
+      $img = $seMov->poster_path;
+      if(empty($img) && is_null($img)){
+        $img =  dirname($_SERVER['PHP_SELF']).'neftlex/Images/no-gambar.jpg';
+      }
+      else {
+        $img = 'http://image.tmdb.org/t/p/w500'.$img;
+    }
+      ?>
+    <img src="<?php echo $img;?>" alt="not found " />
   </div>
   <div class="main-slider-text">
     <span class="badge text-bg-danger">FULL HD</span>

@@ -61,13 +61,13 @@
 
   <main>
     <!-- movie banner -->
-    <section class="movie-banner">
+    <section class="movie-banner-detail">
       <?php
       // $id_movie = $_GET['id'];
       include_once "api/detail_movie.php";
       ?>
       <div class="m-banner-img">
-        <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailMovie->poster_path ?>" alt="" />
+        <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailMovie->backdrop_path ?>" alt="" />
       </div>
       <div class="banner-container">
 
@@ -88,6 +88,7 @@
               <span class="h1 badge text-bg-danger">Ultra HD</span>
               <!-- rating -->
               <span class="h1 badge text-bg-warning ms-3">8.0</span>
+
               <!-- endrating -->
             </div>
             <!-- title bottom -->
@@ -152,13 +153,13 @@
                     <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $credit->profile_path ?>" alt="" />
                   </div>
                   <!-- text -->
-                  <div class="main-slider-text">
-                    <span class="badge text-bg-danger">4K BluRay</span>
+                  <div class="main-slider-text-cast">
+                    <span class="badge text-bg-primary">Cast</span>
                     <!-- bottomtext -->
                     <div class="bottom-text">
                       <div class="movie-name">
-                        <a href="#"><?php echo $credit->original_name ?></a>
-                        <span><?php echo $credit->character ?></span>
+                        <a class="text-light" href="#"><?php echo $credit->original_name ?></a>
+                        <span class="text-light" ><?php echo $credit->character ?></span>
                       </div>
                     </div>
                   </div>
@@ -167,7 +168,26 @@
             <?php } ?>
           </div>
           <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
+      </section>
+    </section>
+
+    <section id="latest">
+      <section class="images">
+        <div class="latest-heading mb-3">
+          <h1 class="text-danger">Images</h1>
+        </div>
+        <!-- images container -->
+        <?php
+        include_once "api/images_movie.php";
+        foreach ($imgMovie->backdrops as $img) {
+        ?>
+        <div class="images-container">
+          <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $img->file_path ?>" alt="">
+        </div>
+        <?php } ?>
       </section>
     </section>
 

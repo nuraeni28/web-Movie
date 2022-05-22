@@ -153,6 +153,8 @@
             <?php }?>
           </div>  
           <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </section>
       
@@ -266,6 +268,10 @@
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
+        },
+        autoplay:{
+          delay:4000,
+          disableOnInteraction:false,
         },
         breakpoints: {
           640: {

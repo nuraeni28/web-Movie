@@ -86,7 +86,25 @@ html::-webkit-scrollbar-thumb{
   justify-content: space-between;
   background: linear-gradient(
     360deg,
-    #ff4026b9 6%,
+    rgb(179, 0, 0) 0%,
+    rgba(212, 205, 205, 0.23) 40%
+  );
+}
+
+.main-slider-text-cast {
+  display: flex;
+  padding: 14px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: linear-gradient(
+    360deg,
+    #c7c7c7b9 6%,
     rgba(212, 205, 205, 0.23) 55%
   );
 }
@@ -232,8 +250,35 @@ html::-webkit-scrollbar-thumb{
   background: rgba(36, 35, 35, 0.7);
   background: linear-gradient(
     0deg,
-    rgb(160, 30, 11) 0%,
+    rgb(206, 30, 30) 0%,
     rgba(62, 62, 62, 0.247) 35%
+  );
+}
+
+
+.movie-banner-detail {
+  display: flex;
+  position: relative;
+  width: 90%;
+  max-width: 1400px;
+  margin: 10px auto;
+  min-height: 520px;
+  padding: 60px 30px 30px 30px;
+  justify-content: center;
+}
+
+.movie-banner-detail::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(36, 35, 35, 0.7);
+  background: linear-gradient(
+    0deg,
+    rgb(0, 1, 59) 0%,
+    rgba(62, 62, 62, 0.247) 100%
   );
 }
 
@@ -279,17 +324,17 @@ html::-webkit-scrollbar-thumb{
 .banner-container img{
   display: flex;
   right: 0px;
-  width: 45%;
-  height: 45%;
+  width: 37%;
+  height: 37%;
   object-fit: contain;
-  object-position: bottom center;
+  object-position: center;
   position: relative;
 }
 
 .title-container {
   display: flex;
   width: 100%;
-  max-width: 500px;
+  max-width: 850px;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -439,4 +484,26 @@ html::-webkit-scrollbar-thumb{
 
 .active-popup {
   display: flex !important;
+}
+
+/* images */
+.images-container{
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    justify-content: center;
+    align-items: center;
+    gap: 1,5rem;
+}
+
+.images-container img{
+  gap: 0.5rem;
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+  color: white !important;
 }

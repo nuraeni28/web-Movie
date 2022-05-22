@@ -50,10 +50,10 @@
             </li>
           </ul>
           <form class="d-flex" role="search" action="searchMovie.php" method="get">
-              <button class="btn btn-outline-danger" type="submit">
-                Search
-              </button>
-            </form>
+            <button class="btn btn-outline-danger" type="submit">
+              Search
+            </button>
+          </form>
         </div>
       </div>
     </nav>
@@ -61,19 +61,19 @@
 
   <main>
     <!-- movie banner -->
-    <section class="movie-banner">
+    <section class="movie-banner-detail">
       <?php
       // $id_movie = $_GET['id'];
       include_once "api/detail_tv.php";
       ?>
       <div class="m-banner-img">
-        <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailTV->poster_path ?>" alt="" />
+        <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailTV->backdrop_path ?>" alt="backdrop path" />
       </div>
       <div class="banner-container">
 
         <!-- title -->
         <div class="title-container">
-         <img class="mb-3" src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailTV->poster_path ?>" alt="" />
+          <img class="mb-3" src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailTV->poster_path ?>" alt="" />
           <div class="tittle-top">
             <div class="movie-title">
               <h1><?php echo $detailTV->name ?></h1>
@@ -87,7 +87,9 @@
             <div class="badges">
               <span class="h1 badge text-bg-danger">Ultra HD</span>
               <!-- rating -->
-              <span class="h1 badge text-bg-warning ms-3">8.0</span>
+              <span class="h1 badge text-bg-warning ms-3"><?php echo $detailTV->vote_average ?></span>
+              <span class="h1 badge text-bg-dark ms-3"><?php echo $detailTV->number_of_episodes?> EPISODES</span>
+              <span class="h1 badge text-bg-dark ms-3"><?php echo $detailTV->number_of_seasons?> SEASONS</span>
               <!-- endrating -->
             </div>
             <!-- title bottom -->
@@ -131,7 +133,7 @@
       </div>
     </section>
 
-
+    <!-- cast -->
     <section id="main-slider">
       <section id="latest">
         <div class="latest-heading mb-3">
@@ -151,13 +153,13 @@
                     <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $credit->profile_path ?>" alt="" />
                   </div>
                   <!-- text -->
-                  <div class="main-slider-text">
-                    <span class="badge text-bg-danger">4K BluRay</span>
+                  <div class="main-slider-text-cast">
+                    <span class="badge text-bg-primary">Cast</span>
                     <!-- bottomtext -->
                     <div class="bottom-text">
                       <div class="movie-name">
-                        <a href="#"><?php echo $credit->original_name ?></a>
-                        <span><?php echo $credit->character ?></span>
+                        <a class="text-light" href="#"><?php echo $credit->original_name ?></a>
+                        <span class="text-light"><?php echo $credit->character ?></span>
                       </div>
                     </div>
                   </div>
@@ -166,9 +168,30 @@
             <?php } ?>
           </div>
           <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </section>
     </section>
+
+    <section id="latest">
+      <section class="images">
+        <div class="latest-heading mb-3">
+          <h1 class="text-danger">Images</h1>
+        </div>
+        <!-- images container -->
+        <?php
+        include_once "api/images_tv.php";
+        foreach ($imgTV->backdrops as $img) {
+        ?>
+        <div class="images-container">
+          <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $img->file_path ?>" alt="">
+        </div>
+        <?php } ?>
+      </section>
+      
+    </section>
+    
 
     <section id="latest">
       <!-- heading -->
@@ -192,7 +215,7 @@
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
-                <a href=<?php echo 'detailTV.php?id='.$recomended->id ?>><?php echo $recomended->name?></a>
+                  <a href=<?php echo 'detailTV.php?id=' . $recomended->id ?>><?php echo $recomended->name ?></a>
                   <span><?php echo $recomended->first_air_date ?></span>
                 </div>
               </div>

@@ -182,7 +182,7 @@
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
-                   <a href=<?php echo 'detail.php?id='.$pop->id ?>> <?php echo $pop->original_name;?></a>
+                   <a href=<?php echo 'detailTV.php?id='.$pop->id ?>> <?php echo $pop->original_name;?></a>
                   <span><?php echo $pop->first_air_date?></span>
                 </div>
               </div>
@@ -218,7 +218,7 @@
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
-                  <a href="#"><?php echo $top->name?></a>
+                  <a href=<?php echo 'detailTV.php?id='.$top->id ?> ><?php echo $top->name?></a>
                   <span><?php echo $top->first_air_date?></span>
                 </div>
               </div>

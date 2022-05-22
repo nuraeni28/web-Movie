@@ -33,8 +33,8 @@ foreach($searchTV->results as $seTv){
   <div class="post-img">
       <?php 
       $img = $seTv->poster_path;
-      if(empty($img) && is_null($img)){
-        $img =  dirname($_SERVER['PHP_SELF']).'/Images/no-gambar.jpg';
+      if(empty($img) || is_null($img)){
+        $img =  dirname($_SERVER['PHP_SELF']).'/neftlex/images/no-gambar.jpg';
       }
       else {
         $img = 'http://image.tmdb.org/t/p/w300'.$img;
