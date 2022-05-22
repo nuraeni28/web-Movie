@@ -48,7 +48,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Movies</a>
+                <a class="nav-link" href="movies.php">Movies</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -74,16 +74,10 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link">TV Show</a>
+                <a class="nav-link" href="tv_show.php">TV Show</a>
               </li>
             </ul>
             <form class="d-flex" role="search" action="searchMovie.php" method="get">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
               <button class="btn btn-outline-danger" type="submit">
                 Search
               </button>
@@ -133,11 +127,11 @@
         <!-- Swiper -->
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-            <?php
+          <?php
               include_once "api/topRated.php";
               foreach($topRated->results as $top){
              ?>
+            <div class="swiper-slide">
               <div class="main-slider-box">
                 <!-- img -->
                 <div class="main-slider-img">
@@ -146,22 +140,20 @@
                 <!-- text -->
                 <div class="main-slider-text">
                   <span class="badge text-bg-danger">4K BluRay</span>
-
                   <!-- bottomtext -->
                   <div class="bottom-text">
                     <div class="movie-name">
-                      <a href="#"><?php echo $top->original_title?></a>
+                    <a href=<?php echo 'detail.php?id='.$top->id ?>><?php echo $top->original_title?></a>
                       <span><?php echo $top->release_date?></span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>  
+            <?php }?>
           </div>  
           <div class="swiper-pagination"></div>
         </div>
-        <?php }?> 
-      
       </section>
       
     

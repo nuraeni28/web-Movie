@@ -28,7 +28,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="h1 text-white navbar-brand text-bg-danger" href="index.php"
+          <a class="h1 text-white navbar-brand text-bg-danger" href="#"
             >Netlfex</a
           >
           <button
@@ -45,10 +45,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Movies</a>
+                <a class="nav-link" href="movies.php">Movies</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -77,22 +77,22 @@
                 <a class="nav-link">TV Show</a>
               </li>
             </ul>
-            <div class="d-flex">
+            <form class="d-flex" role="search" action="searchMovie.php" method="get">
               <input
                 class="form-control me-2"
                 type="search"
-                id="id_search_movie"
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button class="btn btn-outline-danger" type="submit" onclick="searchMovie();">
+              <button class="btn btn-outline-danger" type="submit">
                 Search
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </nav>
     </header>
+
     <main>
       <!-- movie banner -->
       <section class="movie-banner">
@@ -127,21 +127,116 @@
           </div>
         </div>
       </section>
-    <!-- Latest Movies -->
-      
-    <section id="latest">
+      <!-- Now Playing  Movies -->
+      <section id="latest">
         <!-- heading -->
         <div class="latest-heading">
-          <h1>Search Result</h1>
+          <h1>Now Playing</h1>
         </div>
+
         <!-- container -->
         
-        <div class="post-container" id="result-search">
+        <div class="post-container">
+          <!-- postbox -->
+          <?php
+          include_once "api/now_playing_movie.php";
+          foreach($playingNow->results as $now){
+          ?>
+          <div class="post-box">
+            <!-- img -->
+            <div class="post-img">
+              <img src="<?php echo 'http://image.tmdb.org/t/p/w500'.$now->poster_path?>" alt="" />
+            </div>
+            <div class="main-slider-text">
+              <span class="badge text-bg-danger">FULL HD</span>
+
+              <!-- bottomtext -->
+              <div class="bottom-text">
+                <div class="movie-name">
+                  <a href="#"><?php echo $now->original_title?></a>
+                  <span><?php echo $now->release_date?></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php }?>  
+        </div>
+      </section>   
+ <!-- Popular Movies -->
+      <section id="latest">
+        <!-- heading -->
+        <div class="latest-heading">
+          <h1>Popular</h1>
+        </div>
+
+        <!-- container -->
         
-          <!-- postbox --> 
+        <div class="post-container">
+          <!-- postbox -->
+          <?php
+          include_once "api/popular.php";
+          foreach($popular->results as $pop){
+          ?>
+          <div class="post-box">
+            <!-- img -->
+            <div class="post-img">
+            <img src="<?php echo 'http://image.tmdb.org/t/p/w500'.$pop->poster_path?>" alt="" />
+            </div>
+            <div class="main-slider-text">
+              <span class="badge text-bg-danger">FULL HD</span>
+
+              <!-- bottomtext -->
+              <div class="bottom-text">
+                <div class="movie-name">
+                   <a href=<?php echo 'detail.php?id='.$pop->id ?>> <?php echo $pop->original_title;?></a>
+                  <span><?php echo $pop->release_date?></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php }?>  
+        </div>
+      </section>
+  
+      <!-- Top Rated Movies -->
+      <section id="latest">
+        <!-- heading -->
+        <div class="latest-heading">
+          <h1>Top Rated</h1>
+        </div>
+
+        <!-- container -->
+        
+        <div class="post-container">
+          <!-- postbox -->
+          <?php
+          include_once "api/topRated.php";
+          foreach($topRated->results as $top){
+          ?>
+          <div class="post-box">
+            <!-- img -->
+            <div class="post-img">
+              <img src="<?php echo 'http://image.tmdb.org/t/p/w500'.$top->poster_path?>" alt="" />
+            </div>
+            <div class="main-slider-text">
+              <span class="badge text-bg-danger">FULL HD</span>
+
+              <!-- bottomtext -->
+              <div class="bottom-text">
+                <div class="movie-name">
+                  <a href="#"><?php echo $top->original_title?></a>
+                  <span><?php echo $top->release_date?></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php }?>  
         </div>
       </section>  
+
+      
     </main>
+
     <footer class="text-muted py-5">
       <div class="container">
         <p class="float-end mb-1">
@@ -149,19 +244,48 @@
         </p>
       </div>
     </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
     <script>
-function searchMovie(){
-  var query = document.getElementById("id_search_movie").value;
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("result-search").innerHTML =this.responseText;
-    } 
-    
-  };
-  xmlhttp.open("GET", "http://localhost/movie/api/search_movie.php?query="+query,true);
-  xmlhttp.send();
-};
-</script>
+      function reinitSwiper(swiper){
+        setTimeout(function() {
+          swiper.reInit();
+        }, 500);
+      }
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+        },
+      });
+    </script>
   </body>
 </html>

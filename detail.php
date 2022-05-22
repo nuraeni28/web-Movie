@@ -20,14 +20,14 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="h1 text-white navbar-brand text-bg-danger" href="#">Netlfex</a>
+        <a class="h1 text-white navbar-brand text-bg-danger" href="index.php">Netlfex</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Home</a>
+              <a class="nav-link" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Movies</a>
@@ -63,43 +63,49 @@
   <main>
     <!-- movie banner -->
     <section class="movie-banner">
-    <?php
-       $id_movie = $_GET['id'];
-        include_once "api/detail_movie.php";
-        ?>
+      <?php
+      $id_movie = $_GET['id'];
+      include_once "api/detail_movie.php";
+      ?>
       <div class="m-banner-img">
-        <img src="<?php echo 'http://image.tmdb.org/t/p/w500'.$detailMovie->poster_path?>" alt="" />
+        <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailMovie->poster_path ?>" alt="" />
       </div>
       <div class="banner-container">
+
         <!-- title -->
         <div class="title-container">
+         <img class="mb-3" src="<?php echo 'http://image.tmdb.org/t/p/w500' . $detailMovie->poster_path ?>" alt="" />
           <div class="tittle-top">
             <div class="movie-title">
-              <h1><?php echo $detailMovie->original_title?></h1>
+              <h1><?php echo $detailMovie->original_title ?></h1>
             </div>
             <div class="more-about-movie">
               <p class="text-light">
-              <?php echo $detailMovie->overview?>
+                <?php echo $detailMovie->overview ?>
               </p>
             </div>
+
             <div class="badges">
               <span class="h1 badge text-bg-danger">Ultra HD</span>
+              <!-- rating -->
+              <span class="h1 badge text-bg-warning ms-3">8.0</span>
+              <!-- endrating -->
             </div>
             <!-- title bottom -->
           </div>
           <div class="title-bottom">
             <div class="category">
               <?php
-            foreach($detailMovie->genres as $genres){
+              foreach ($detailMovie->genres as $genres) {
               ?>
-              <a class="text-light" href="#"> <?php echo $genres->name?></a> |
-             
+                <a class="text-light" href="#"> <?php echo $genres->name ?></a> |
+              <?php } ?>
             </div>
-            <?php }?>
+
             <a href="https://www.youtube.com/watch?v=Rf8LAYJSOL8" type="button" class="btn btn-outline-light">Watch Trailer</a>
-            
+
           </div>
-         
+
         </div>
 
         <div class="play-btn-container">
@@ -125,14 +131,53 @@
         </div>
       </div>
     </section>
+
+
+    <section id="main-slider">
+      <section id="latest">
+        <div class="latest-heading mb-3">
+          <h1>Cast</h1>
+        </div>
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <?php
+            $id_movie = $_GET['id'];
+            include_once "api/credit_movie.php";
+            foreach ($creditMovie->cast as $credit) {
+            ?>
+              <div class="swiper-slide">
+                <div class="main-slider-box">
+                  <!-- img -->
+                  <div class="main-slider-img">
+                    <img src="<?php echo 'http://image.tmdb.org/t/p/w500' . $credit->profile_path ?>" alt="" />
+                  </div>
+                  <!-- text -->
+                  <div class="main-slider-text">
+                    <span class="badge text-bg-danger">4K BluRay</span>
+                    <!-- bottomtext -->
+                    <div class="bottom-text">
+                      <div class="movie-name">
+                        <a href="#"><?php echo $credit->original_name ?></a>
+                        <span><?php echo $credit->character ?></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php } ?>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+    </section>
+
     <section id="latest">
       <!-- heading -->
       <div class="latest-heading">
         <h1>More to Explore</h1>
       </div>
-
       <!-- container -->
-
       <div class="post-container">
         <!-- postbox -->
         <?php
@@ -146,11 +191,10 @@
             </div>
             <div class="main-slider-text">
               <span class="badge text-bg-danger">FULL HD</span>
-
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
-                  <a href="#"><?php echo $recomended->original_title ?></a>
+                <a href=<?php echo 'detail.php?id='.$recomended->id ?>><?php echo $recomended->original_title ?></a>
                   <span><?php echo $recomended->release_date ?></span>
                 </div>
               </div>
@@ -160,41 +204,50 @@
       </div>
     </section>
   </main>
+
   <footer class="text-muted py-5">
     <div class="container">
       <p class="float-end mb-1">
-        <a href="#">Back to top</a>
+        <a class="text-danger" href="#">Back to top</a>
       </p>
     </div>
   </footer>
 
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- Initialize Swiper -->
   <script>
-    /*==popup-open==================================*/
-    $(document).on("click", ".play-btn a", function() {
-      $(".play").addClass("active-popup");
-    });
-    /*==popup-Close==================================*/
-    $(document).on("click", ".close-movie", function() {
-      $(".play").removeClass("active-popup");
-    });
-    /*==auto-play-when-popup-open===================*/
-    $(".play-btn a").click(function() {
-      $("#m-video")[0].play();
-    });
-    /*==Close-video-when-poppup-close==============*/
-    $(".close-movie").click(function() {
-      $("#m-video")[0].pause();
+    function reinitSwiper(swiper) {
+      setTimeout(function() {
+        swiper.reInit();
+      }, 500);
+    }
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      },
     });
   </script>
-
-  <script src="js/jQuery.js"></script>
-
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   <script>
     feather.replace();
   </script>
-    <script>
 </body>
 
 </html>
