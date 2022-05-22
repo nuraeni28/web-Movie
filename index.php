@@ -77,7 +77,7 @@
                 <a class="nav-link">TV Show</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
+            <form class="d-flex" role="search" action="searchMovie.php" method="get">
               <input
                 class="form-control me-2"
                 type="search"
@@ -184,7 +184,7 @@
           <div class="post-box">
             <!-- img -->
             <div class="post-img">
-              <img src="<?php echo 'http://image.tmdb.org/t/p/w500'.$pop->poster_path?>" alt="" />
+            <img src="<?php echo 'http://image.tmdb.org/t/p/w500'.$pop->poster_path?>" alt="" />
             </div>
             <div class="main-slider-text">
               <span class="badge text-bg-danger">FULL HD</span>
@@ -192,7 +192,7 @@
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
-                  <a href="#"><?php echo $pop->original_title?></a>
+                   <a href=<?php echo 'detail.php?id='.$pop->id ?>> <?php echo $pop->original_title;?></a>
                   <span><?php echo $pop->release_date?></span>
                 </div>
               </div>

@@ -93,7 +93,6 @@
         </div>
       </nav>
     </header>
-
     <main>
       <!-- movie banner -->
       <section class="movie-banner">
@@ -128,7 +127,6 @@
           </div>
         </div>
       </section>
-
     <!-- Latest Movies -->
       
     <section id="latest">
@@ -136,7 +134,6 @@
         <div class="latest-heading">
           <h1>Search Result</h1>
         </div>
-
         <!-- container -->
         
         <div class="post-container" id="result-search">
@@ -145,7 +142,6 @@
         </div>
       </section>  
     </main>
-
     <footer class="text-muted py-5">
       <div class="container">
         <p class="float-end mb-1">
@@ -154,11 +150,9 @@
       </div>
     </footer>
     <script>
-
 function searchMovie(){
   var query = document.getElementById("id_search_movie").value;
   var xmlhttp = new XMLHttpRequest();
-
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("result-search").innerHTML =this.responseText;
@@ -167,9 +161,7 @@ function searchMovie(){
   };
   xmlhttp.open("GET", "http://localhost/movie/api/search_movie.php?query="+query,true);
   xmlhttp.send();
-
 };
 </script>
-
   </body>
 </html>
