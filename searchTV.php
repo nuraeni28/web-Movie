@@ -48,7 +48,7 @@
                 <a class="nav-link" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="movies.php">Movies</a>
+                <a class="nav-link" href="movies.php">Movies</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -74,18 +74,18 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="tv_show.php">TV Show</a>
+                <a class="nav-link active" href="tv_show.php">TV Show</a>
               </li>
             </ul>
             <div class="d-flex">
               <input
                 class="form-control me-2"
                 type="search"
-                id="id_search_movie"
+                id="id_search_tv"
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button class="btn btn-outline-danger" type="submit" onclick="searchMovie();">
+              <button class="btn btn-outline-danger" type="submit" onclick="searchTV();">
                 Search
               </button>
             </div>
@@ -150,8 +150,8 @@
       </div>
     </footer>
     <script>
-function searchMovie(){
-  var query = document.getElementById("id_search_movie").value;
+function searchTV(){
+  var query = document.getElementById("id_search_tv").value;
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -159,7 +159,7 @@ function searchMovie(){
     } 
     
   };
-  xmlhttp.open("GET", "http://localhost/neftlex/api/search_movie.php?query="+query,true);
+  xmlhttp.open("GET", "http://localhost/neftlex/api/search_tv.php?query="+query,true);
   xmlhttp.send();
 };
 </script>

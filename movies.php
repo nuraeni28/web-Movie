@@ -45,10 +45,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                <a class="nav-link" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="movies.php">Movies</a>
+                <a class="nav-link active" href="movies.php">Movies</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -147,7 +147,7 @@
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
-                  <a href="#"><?php echo $now->original_title?></a>
+                <a href=<?php echo 'detailMovie.php?id='.$now->id ?>><?php echo $now->original_title?></a>
                   <span><?php echo $now->release_date?></span>
                 </div>
               </div>
@@ -218,7 +218,7 @@
               <!-- bottomtext -->
               <div class="bottom-text">
                 <div class="movie-name">
-                  <a href="#"><?php echo $top->original_title?></a>
+                <a href=<?php echo 'detailMovie.php?id='.$top->id ?>><?php echo $top->original_title?></a>
                   <span><?php echo $top->release_date?></span>
                 </div>
               </div>

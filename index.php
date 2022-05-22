@@ -77,11 +77,11 @@
                 <a class="nav-link" href="tv_show.php">TV Show</a>
               </li>
             </ul>
-            <form class="d-flex" role="search" action="searchMovie.php" method="get">
+            <!-- <form class="d-flex" role="search" action="searchMovie.php" method="get">
               <button class="btn btn-outline-danger" type="submit">
                 Search
               </button>
-            </form>
+            </form> -->
           </div>
         </div>
       </nav>

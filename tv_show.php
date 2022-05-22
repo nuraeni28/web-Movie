@@ -45,7 +45,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                <a class="nav-link" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="movies.php">Movies</a>
@@ -74,10 +74,10 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link">TV Show</a>
+                <a class="nav-link active">TV Show</a>
               </li>
             </ul>
-            <form class="d-flex" role="search" action="searchMovie.php" method="get">
+            <form class="d-flex" role="search" action="searchTV.php" method="get">
               <button class="btn btn-outline-danger" type="submit">
                 Search
               </button>

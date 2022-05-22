@@ -46,7 +46,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tv_show.php">TV Show</a>
+              <a class="nav-link active" href="tv_show.php">TV Show</a>
             </li>
           </ul>
           <form class="d-flex" role="search" action="searchMovie.php" method="get">
